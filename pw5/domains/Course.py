@@ -36,17 +36,14 @@ class Course(NameID):
             )
 
     def displayMarks(self):
-        """Display marks of all students in this course"""
-        print("---------------------------------------")
+        """Display marks of all students in this course as a str"""
         if self._marks == {}:
-            print(f"Havent add marks of any student of the course {str(self)}")
-            return
+            return f"Havent add marks of any student of the course {self.getID} {self.getName}"
         else:
-            print(f"Displaying all marks of the course {str(self)} :")
+            content = ""
             for key, scores in self._marks.items():
-                print(
-                    f"{key} : {scores[0]}, {scores[1]}, {scores[2]} -> overall : {average(scores,weights=[0.1, 0.4, 0.5]):.2f}"
-                )
+                content += f"{key} : {scores[0]}, {scores[1]}, {scores[2]} -> overall : {average(scores,weights=[0.1, 0.4, 0.5]):.2f}\n"
+            return content
 
     def addMarks(self, student):
         """Add/overwrite marks of a student in the course"""

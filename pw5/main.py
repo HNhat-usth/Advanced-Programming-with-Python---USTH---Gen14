@@ -10,8 +10,8 @@ def sortStudentsByGPA(students, courses):
     if students == []:
         print("There is no student registered")
         return [], []
-    elif students == []:
-        print("There is no student registered")
+    elif courses == []:
+        print("There is no course registered")
         return [], []
     else:
         students_have_GPA = []
@@ -79,22 +79,20 @@ def main():
                     courses[index_course].addMarks(students[index_student])
 
             case 3:  # ------------- Display all students
-                try:
-                    ui.start()
-                    sorted_list = sortStudentsByGPA(students=students, courses=courses)
-                    ui.display(
-                        strListToStr(students),
-                        title="- Displaying all students :",
-                    )
-                except Exception as e:
-                    print(f"An error occurred: {e}")
-                finally:
-                    ui.close()
+                sorted_list = sortStudentsByGPA(students=students, courses=courses)
+                ui.try_except_display(
+                    strListToStr(students),
+                    title="- Displaying all students :",
+                )
 
             case 4:  # ------------- Display a course and its students
                 index_course = pick(courses, "course")
                 if index_course != -1:
-                    courses[index_course].displayMarks()
+                    message = courses[index_course].displayMarks()
+                    ui.try_except_display(
+                        message,
+                        f"Displaying all marks of the course {courses[index_course].getID()} {courses[index_course].getName()} :",
+                    )
 
             case 5:  # ------------- Calculate GPA of a student
                 index_student = pick(students, "students")
@@ -112,18 +110,12 @@ def main():
                 )
                 if sorted_list == []:
                     continue
-                try:
-                    ui.start()
-                    ui.display(
-                        strListToStr(sorted_list)
-                        + "\nStudents that havent been fully graded:\n"
-                        + strListToStr(students_without_GPA),
-                        title="List of students that have been fully graded, ordered by GPA :",
-                    )
-                except Exception as e:
-                    print(f"An error occurred: {e}")
-                finally:
-                    ui.close()
+                ui.try_except_display(
+                    strListToStr(sorted_list)
+                    + "\nStudents that havent been fully graded:\n"
+                    + strListToStr(students_without_GPA),
+                    title="List of students that have been fully graded, ordered by GPA :",
+                )
 
             case 7:
                 break

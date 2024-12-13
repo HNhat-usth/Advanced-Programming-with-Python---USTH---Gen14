@@ -4,3 +4,6 @@ Probability & Statistics
 Math.002
 Signals & Systems
 3
+Math.005
+Numerical Methods
+3
