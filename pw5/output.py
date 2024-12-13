@@ -25,6 +25,7 @@ class UI:
             curses.endwin()
 
     def display(self, message, title, color_pair=1, emphasis=curses.A_BOLD):
+        """Display a title with it content in the curses screen"""
         while True:
             self.stdscr.clear()
             self.stdscr.addstr(0, 0, title, curses.color_pair(2) | curses.A_ITALIC)
@@ -35,3 +36,13 @@ class UI:
             key = self.stdscr.getch()
             if key == ord("q"):
                 break
+
+    def try_except_display(self, message, title):
+        """Automatically handle errors and cleanup for display()"""
+        try:
+            self.start()
+            self.display(message, title)
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        finally:
+            self.close()
