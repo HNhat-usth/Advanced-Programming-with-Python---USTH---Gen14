@@ -2,6 +2,7 @@ from domains import *
 from input import *
 from output import *
 from file_handler import *
+import os
 
 
 def sortStudentsByGPA(students, courses):
@@ -41,14 +42,17 @@ input_options = [
     "Exit",
 ]
 
+file_names = ["students.txt", "courses.txt", "marks.txt"]
+
 
 def main():
+    if os.path.exists("students.dat"):
+        decompress(file_names, "students.dat")
+    students = getStudentsFromFile(file_name=file_names[0])
+    courses = getCoursesFromFile(file_name=file_names[1])
+    getMarksFromFile(courses, file_name=file_names[2])
+
     ui = UI()
-
-    students = getStudentsFromFile()
-    courses = getCoursesFromFile()
-    getMarksFromFile(courses)
-
     while True:
         option = inputNum(
             int,
@@ -67,11 +71,13 @@ def main():
             case 1:  # ------------- Add student
                 student = Student.createStudent()
                 students.append(student)
+
             case 2:  # ------------- Add marks for a student in a course
                 index_course = pick(courses, "course")
                 index_student = pick(students, "student")
                 if index_course != -1 and index_student != -1:
                     courses[index_course].addMarks(students[index_student])
+
             case 3:  # ------------- Display all students
                 try:
                     ui.start()
@@ -84,10 +90,12 @@ def main():
                     print(f"An error occurred: {e}")
                 finally:
                     ui.close()
+
             case 4:  # ------------- Display a course and its students
                 index_course = pick(courses, "course")
                 if index_course != -1:
                     courses[index_course].displayMarks()
+
             case 5:  # ------------- Calculate GPA of a student
                 index_student = pick(students, "students")
                 if index_student != -1:
@@ -116,12 +124,15 @@ def main():
                     print(f"An error occurred: {e}")
                 finally:
                     ui.close()
+
             case 7:
                 break
 
     studentsToFile(students)
     coursesToFile(courses)
     marksToFile(courses)
+
+    compress(file_names, "students.dat")
 
 
 if __name__ == "__main__":
