@@ -42,15 +42,13 @@ input_options = [
     "Exit",
 ]
 
-file_names = ["students.txt", "courses.txt", "marks.txt"]
-
 
 def main():
     if os.path.exists("students.dat"):
-        decompress("students.dat")
-    students = getStudentsFromFile(file_name=file_names[0])
-    courses = getCoursesFromFile(file_name=file_names[1])
-    getMarksFromFile(courses, file_name=file_names[2])
+        students, courses = decompressAndUnpickle("students.dat")
+    else:
+        print("Missing file 'students.dat'")
+        return
 
     ui = UI()
     while True:
@@ -118,11 +116,7 @@ def main():
             case 7:
                 break
 
-    studentsToFile(students)
-    coursesToFile(courses)
-    marksToFile(courses)
-
-    compress(file_names, "students.dat")
+    pickleAndCompress(students=students, courses=courses, file_name="students.dat")
 
 
 if __name__ == "__main__":
