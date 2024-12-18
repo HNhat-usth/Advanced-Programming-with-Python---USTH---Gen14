@@ -11,7 +11,7 @@ def studentsToFile(students):
             f.write(student.getID() + "\n")
             f.write(student.getName() + "\n")
             f.write(student.getDob() + "\n")
-        print("...Done")
+        print("         ...Done")
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
@@ -26,7 +26,7 @@ def coursesToFile(courses):
             f.write(course.getID() + "\n")
             f.write(course.getName() + "\n")
             f.write(str(course.getECT()) + "\n")
-        print("...Done")
+        print("         ...Done")
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
@@ -44,7 +44,7 @@ def marksToFile(courses):
                 for component in all_marks[studentinfo]:
                     f.write(str(component) + "\n")
             f.write("\n")
-        print("...Done")
+        print("         ...Done")
     except Exception as e:
         print(f"An error has occured: {e}")
     finally:
@@ -65,7 +65,7 @@ def getStudentsFromFile(file_name):
             if id == "":
                 break
             students.append(Student(id, name, dob))
-        print("...Done")
+        print("         ...Done")
     except Exception as e:
         print(f"An error has occured: {e}")
     finally:
@@ -87,7 +87,7 @@ def getCoursesFromFile(file_name):
             if id == "":
                 break
             courses.append(Course(id, name, int(ect)))
-        print("...Done")
+        print("         ...Done")
     except Exception as e:
         print(f"An error has occured: {e}")
     finally:
@@ -110,7 +110,7 @@ def getMarksFromFile(courses, file_name):
                     int(f.readline().rstrip("\n")),
                 )
                 course.setMarks(student_info, [attendance, mid, final])
-        print("...Done")
+        print("         ...Done")
     except Exception as e:
         print(f"An error has occured: {e}")
     finally:
@@ -127,10 +127,10 @@ def compress(filenames, compressed_name):
                 content = f_in.read()
                 f_out.write(len(content).to_bytes(4, byteorder="big"))
                 f_out.write(content)
-    print(f"...Done")
+    print(f"            ...Done")
 
 
-def decompress(names, compressed_name):
+def decompress(compressed_name):
     print(f"Decompressing {compressed_name}")
     with gzip.open("students.dat", "rb") as f_in:
         while True:
@@ -150,4 +150,4 @@ def decompress(names, compressed_name):
             with open(file_name, "wb") as out_file:
                 out_file.write(file_data)
             print(f"Extracted: {file_name} ({content_length} bytes)")
-    print("...Done")
+    print("         ...Done")

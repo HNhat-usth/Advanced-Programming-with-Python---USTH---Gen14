@@ -38,7 +38,7 @@ class Course(NameID):
     def displayMarks(self):
         """Display marks of all students in this course as a str"""
         if self._marks == {}:
-            return f"Havent add marks of any student of the course {self.getID} {self.getName}"
+            return f"Havent add marks of any student of the course {self.getID()} {self.getName()}"
         else:
             content = ""
             for key, scores in self._marks.items():

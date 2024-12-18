@@ -47,7 +47,7 @@ file_names = ["students.txt", "courses.txt", "marks.txt"]
 
 def main():
     if os.path.exists("students.dat"):
-        decompress(file_names, "students.dat")
+        decompress("students.dat")
     students = getStudentsFromFile(file_name=file_names[0])
     courses = getCoursesFromFile(file_name=file_names[1])
     getMarksFromFile(courses, file_name=file_names[2])
@@ -81,7 +81,7 @@ def main():
             case 3:  # ------------- Display all students
                 sorted_list = sortStudentsByGPA(students=students, courses=courses)
                 ui.try_except_display(
-                    strListToStr(students),
+                    message=strListToStr(students),
                     title="- Displaying all students :",
                 )
 
@@ -90,8 +90,8 @@ def main():
                 if index_course != -1:
                     message = courses[index_course].displayMarks()
                     ui.try_except_display(
-                        message,
-                        f"Displaying all marks of the course {courses[index_course].getID()} {courses[index_course].getName()} :",
+                        message=message,
+                        title=f"Displaying all marks of the course {courses[index_course].getID()} {courses[index_course].getName()} :",
                     )
 
             case 5:  # ------------- Calculate GPA of a student
@@ -108,11 +108,9 @@ def main():
                 sorted_list, students_without_GPA = sortStudentsByGPA(
                     students=students, courses=courses
                 )
-                if sorted_list == []:
-                    continue
                 ui.try_except_display(
-                    strListToStr(sorted_list)
-                    + "\nStudents that havent been fully graded:\n"
+                    message=strListToStr(sorted_list)
+                    + "\n-Students that havent been fully graded:\n"
                     + strListToStr(students_without_GPA),
                     title="List of students that have been fully graded, ordered by GPA :",
                 )
