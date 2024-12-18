@@ -1,6 +1,0 @@
-Math.001
-Probability & Statistics
-4
-Math.002
-Signals & Systems
-3
