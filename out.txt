@@ -1,0 +1,17 @@
+total 72
+drwxrwxr-x 7 nerfeddoge nerfeddoge  4096 Dec 20 13:36 .
+drwxrwxr-x 3 nerfeddoge nerfeddoge  4096 Nov 27 11:35 ..
+-rw-rw-r-- 1 nerfeddoge nerfeddoge  2854 Nov 27 11:29 1.student.mark.py
+-rw-rw-r-- 1 nerfeddoge nerfeddoge  6266 Dec  6 11:24 2.student.mark.oop.py
+-rw-rw-r-- 1 nerfeddoge nerfeddoge 11660 Dec 12 22:21 3.student.mark.oop.math.py
+-rw-rw-r-- 1 nerfeddoge nerfeddoge   819 Dec 20 13:53 7.shell.py
+drwxrwxr-x 5 nerfeddoge nerfeddoge  4096 Dec  6 13:51 .env
+drwxrwxr-x 8 nerfeddoge nerfeddoge  4096 Dec 18 12:03 .git
+-rw-rw-r-- 1 nerfeddoge nerfeddoge    13 Dec 11 09:22 .gitignore
+-rw-rw-r-- 1 nerfeddoge nerfeddoge     3 Dec 20 13:52 input.txt
+-rw-rw-r-- 1 nerfeddoge nerfeddoge     0 Dec 27 09:28 out.txt
+drwxrwxr-x 4 nerfeddoge nerfeddoge  4096 Dec 12 22:36 pw4
+drwxrwxr-x 4 nerfeddoge nerfeddoge  4096 Dec 13 20:54 pw5
+drwxrwxr-x 4 nerfeddoge nerfeddoge  4096 Dec 18 11:58 pw6
+-rwxrwxr-x 1 nerfeddoge nerfeddoge   343 Nov 27 11:40 README.md
+-rw-rw-r-- 1 nerfeddoge nerfeddoge  2986 Dec 11 09:22 test.py
