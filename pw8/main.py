@@ -3,6 +3,7 @@ from input import *
 from output import *
 from file_handler import *
 import os
+import threading
 
 
 def sortStudentsByGPA(students, courses):
@@ -112,11 +113,16 @@ def main():
                     + strListToStr(students_without_GPA),
                     title="List of students that have been fully graded, ordered by GPA :",
                 )
-
             case 7:
                 break
 
-    pickleAndCompress(students=students, courses=courses, file_name="students.dat")
+    thread = threading.Thread(
+        target=lambda: pickleAndCompress(
+            students=students, courses=courses, file_name="students.dat"
+        )
+    )
+    thread.start()
+    thread.join()
 
 
 if __name__ == "__main__":
